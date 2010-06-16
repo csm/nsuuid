@@ -1,0 +1,4 @@
+Attempt to make a useful, Objective-C class for dealing with UUIDs. Why? Simply because:
+
+* I wanted to deal with numeric UUIDs, not exclusively hex strings.
+* I wanted autorelease support, and `CFUUIDRef` doesn't provide that.
