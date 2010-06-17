@@ -81,6 +81,13 @@
     return [NSUUID uuidWithUUIDBytes: bytes];
 }
 
++ (NSUUID *) nullUuid
+{
+    CFUUIDBytes bytes;
+    memset(&bytes, 0, sizeof(bytes));
+    return [NSUUID uuidWithUUIDBytes: bytes];
+}
+
 - (NSString *) stringValue
 {
     return [NSString stringWithFormat: @"%02x%02x%02x%02x-%02x%02x-%02x%02x-%02x%02x-%02x%02x%02x%02x%02x%02x",
@@ -112,6 +119,11 @@
     return memcmp(&bytes, &thatbytes, sizeof(bytes)) == 0;
 }
 
+- (NSString *) description
+{
+    return [self stringValue];
+}
+
 - (CFUUIDRef) uuid
 {
     return CFUUIDCreateWithBytes(NULL, bytes.byte0, bytes.byte1, bytes.byte2, bytes.byte3,
@@ -130,6 +142,26 @@
 {
     return [NSData dataWithBytes: (void *) &bytes
                           length: sizeof(bytes)];
+}
+
+- (BOOL) isNullUuid
+{
+    return (bytes.byte0 == 0
+            && bytes.byte1 == 0
+            && bytes.byte2 == 0
+            && bytes.byte3 == 0
+            && bytes.byte4 == 0
+            && bytes.byte5 == 0
+            && bytes.byte6 == 0
+            && bytes.byte7 == 0
+            && bytes.byte8 == 0
+            && bytes.byte9 == 0
+            && bytes.byte10 == 0
+            && bytes.byte11 == 0
+            && bytes.byte12 == 0
+            && bytes.byte13 == 0
+            && bytes.byte14 == 0
+            && bytes.byte15 == 0);
 }
 
 @end

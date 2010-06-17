@@ -24,10 +24,12 @@
 + (NSUUID *) uuidWithUUIDBytes: (CFUUIDBytes) uuidBytes;
 + (NSUUID *) uuidWithData: (NSData *) data;
 + (NSUUID *) randomUuid;
++ (NSUUID *) nullUuid;
 
 - (NSString *) stringValue;
 - (CFUUIDRef) uuid;
 - (CFUUIDBytes) bytes;
 - (NSData *) data;
+- (BOOL) isNullUuid;
 
 @end
