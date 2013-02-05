@@ -1,5 +1,5 @@
 //
-//  NSUUID.h
+//  CMUUID.h
 //  WODCoach
 //
 //  Created by Casey Marshall on 6/14/10.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface NSUUID : NSObject
+@interface CMUUID : NSObject
 {
     CFUUIDBytes bytes;
 }
@@ -19,12 +19,12 @@
 - (id) initWithUUIDBytes: (CFUUIDBytes) uuidBytes;
 - (id) initWithData: (NSData *) data;
 
-+ (NSUUID *) uuidWithString: (NSString *) uuidStr;
-+ (NSUUID *) uuidWithUUIDRef: (CFUUIDRef) uuid;
-+ (NSUUID *) uuidWithUUIDBytes: (CFUUIDBytes) uuidBytes;
-+ (NSUUID *) uuidWithData: (NSData *) data;
-+ (NSUUID *) randomUuid;
-+ (NSUUID *) nullUuid;
++ (CMUUID *) uuidWithString: (NSString *) uuidStr;
++ (CMUUID *) uuidWithUUIDRef: (CFUUIDRef) uuid;
++ (CMUUID *) uuidWithUUIDBytes: (CFUUIDBytes) uuidBytes;
++ (CMUUID *) uuidWithData: (NSData *) data;
++ (CMUUID *) randomUuid;
++ (CMUUID *) nullUuid;
 
 - (NSString *) stringValue;
 - (CFUUIDRef) uuid;
