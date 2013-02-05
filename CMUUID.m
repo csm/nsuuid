@@ -1,15 +1,15 @@
 //
-//  NSUUID.m
+//  CMUUID.m
 //  WODCoach
 //
 //  Created by Casey Marshall on 6/14/10.
 //  Copyright 2010 Modal Domains. All rights reserved.
 //
 
-#import "NSUUID.h"
+#import "CMUUID.h"
 
 
-@implementation NSUUID
+@implementation CMUUID
 
 - (id) initWithString: (NSString *) uuidStr
 {
@@ -54,38 +54,38 @@
     return self;
 }
 
-+ (NSUUID *) uuidWithString: (NSString *) uuidStr
++ (CMUUID *) uuidWithString: (NSString *) uuidStr
 {
-    return [[[NSUUID alloc] initWithString: uuidStr] autorelease];
+    return [[[CMUUID alloc] initWithString: uuidStr] autorelease];
 }
 
-+ (NSUUID *) uuidWithUUIDRef: (CFUUIDRef) uuid
++ (CMUUID *) uuidWithUUIDRef: (CFUUIDRef) uuid
 {
-    return [[[NSUUID alloc] initWithUUIDRef: uuid] autorelease];
+    return [[[CMUUID alloc] initWithUUIDRef: uuid] autorelease];
 }
 
-+ (NSUUID *) uuidWithUUIDBytes: (CFUUIDBytes) uuidBytes
++ (CMUUID *) uuidWithUUIDBytes: (CFUUIDBytes) uuidBytes
 {
-    return [[[NSUUID alloc] initWithUUIDBytes: uuidBytes] autorelease];
+    return [[[CMUUID alloc] initWithUUIDBytes: uuidBytes] autorelease];
 }
 
-+ (NSUUID *) uuidWithData: (NSData *) data
++ (CMUUID *) uuidWithData: (NSData *) data
 {
-    return [[[NSUUID alloc] initWithData: data] autorelease];
+    return [[[CMUUID alloc] initWithData: data] autorelease];
 }
 
-+ (NSUUID *) randomUuid
++ (CMUUID *) randomUuid
 {
     CFUUIDBytes bytes;
     SecRandomCopyBytes(kSecRandomDefault, sizeof(bytes), (UInt8 *) &bytes);
-    return [NSUUID uuidWithUUIDBytes: bytes];
+    return [CMUUID uuidWithUUIDBytes: bytes];
 }
 
-+ (NSUUID *) nullUuid
++ (CMUUID *) nullUuid
 {
     CFUUIDBytes bytes;
     memset(&bytes, 0, sizeof(bytes));
-    return [NSUUID uuidWithUUIDBytes: bytes];
+    return [CMUUID uuidWithUUIDBytes: bytes];
 }
 
 - (NSString *) stringValue
@@ -98,7 +98,7 @@
             
 }
 
-- (NSComparisonResult) compareTo: (NSUUID *) that
+- (NSComparisonResult) compareTo: (CMUUID *) that
 {
     CFUUIDBytes thatbytes = [that bytes];
     int result = memcmp(&bytes, &thatbytes, sizeof(bytes));
@@ -111,10 +111,10 @@
 
 - (BOOL) isEqual: (id) object
 {
-    if (object == nil || ![object isKindOfClass: [NSUUID class]])
+    if (object == nil || ![object isKindOfClass: [CMUUID class]])
         return NO;
     
-    NSUUID *that = (NSUUID *) object;
+    CMUUID *that = (CMUUID *) object;
     CFUUIDBytes thatbytes = [that bytes];
     return memcmp(&bytes, &thatbytes, sizeof(bytes)) == 0;
 }
